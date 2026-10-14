@@ -3,10 +3,9 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-# We use SQLite by default for easy local development without a Postgres server.
-# To switch to PostgreSQL, change the DATABASE_URL in your .env to:
-# postgresql://user:password@localhost/dbname
-SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./smartconsent.db")
+# We use SQLite by default. On Vercel serverless, root filesystem is read-only, so use /tmp.
+default_db = "sqlite:////tmp/smartconsent.db" if os.getenv("VERCEL") else "sqlite:///./smartconsent.db"
+SQLALCHEMY_DATABASE_URL = os.getenv("DATABASE_URL", default_db)
 
 # connect_args is needed only for SQLite
 connect_args = {"check_same_thread": False} if SQLALCHEMY_DATABASE_URL.startswith("sqlite") else {}

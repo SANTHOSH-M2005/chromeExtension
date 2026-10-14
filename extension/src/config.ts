@@ -19,6 +19,13 @@ export const getStoredApiUrl = (): string => {
     return envUrl.trim().replace(/\/+$/, '');
   }
 
+  // If running as web app preview (e.g. on Vercel), route to same origin by default
+  if (typeof window !== 'undefined' && window.location && window.location.origin) {
+    if (!window.location.origin.includes('chrome-extension://') && !window.location.origin.includes('localhost:5173')) {
+      return window.location.origin;
+    }
+  }
+
   // Default local backend
   return 'http://localhost:8000';
 };

@@ -2,7 +2,8 @@ import os
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 
-DB_DIR = os.getenv("CHROMA_DB_DIR", os.path.abspath(os.path.join(os.path.dirname(__file__), "../chroma_db")))
+default_chroma_dir = "/tmp/chroma_db" if os.getenv("VERCEL") else os.path.abspath(os.path.join(os.path.dirname(__file__), "../chroma_db"))
+DB_DIR = os.getenv("CHROMA_DB_DIR", default_chroma_dir)
 
 _db_instance = None
 
