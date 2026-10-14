@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "SmartConsent AI",
+  "version": "1.0",
+  "description": "An AI assistant to help analyze Terms of Service and Privacy Policies.",
+  "permissions": [
+    "sidePanel",
+    "tabs",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "index.html"
+  },
+  "action": {
+    "default_title": "Open SmartConsent AI"
+  }
+}

@@ -1,0 +1,17 @@
+# Docker ignore file
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/.pytest_cache
+**/.venv
+**/env
+**/venv
+**/node_modules
+**/dist
+**/.git
+**/.github
+**/.vscode
+**/.oxlintrc.json
+**/tests
+smartconsent.db
