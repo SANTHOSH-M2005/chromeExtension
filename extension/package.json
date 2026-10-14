@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "npm install",
     "build": "tsc -b && vite build",
     "build:web": "vite build",
     "pack": "tsc -b && vite build && python scripts/pack_extension.py",
